@@ -20,8 +20,5 @@ class Human(Player):
             user_input = "Lizard"
         if user_input == '5':
             user_input = "Spock"
-        else:
-           print("Try again")
-           user_input = False
         return user_input
 

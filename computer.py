@@ -8,10 +8,8 @@ class Computer(Player):
         self.computer_score = 0
         super().__init__()
 
-
+    #this method picks a random choice for the AI and returns it
     def computer_move(self):
         computer_choice = random.choice(self.gesture_list)
-        print(computer_choice)
+        return computer_choice
 
-sup = Computer()
-sup.computer_move()
