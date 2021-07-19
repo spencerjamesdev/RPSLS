@@ -3,22 +3,14 @@ from player import Player
 
 class Human(Player):
 
-    def __init__(self):
-        self.human_score = 0
-        super().__init__()
+    def __init__(self, name):
+        super().__init__(name)
 
-    #this method has the user pick 1-5 to select a gesture. returns that gesture and returns false if not 1-5
-    def human_move(self):
-        user_input = input("Make your move! \nRock: '1' \nPaper: '2' \nScissors: '3' \nLizard: '4' \nSpock: '5' \nPlease pick a number 1-5: ")
-        if user_input == '1':
-            user_input = "Rock"
-        if user_input == '2':
-            user_input = "Paper"
-        if user_input == '3':
-            user_input = "Scissors"
-        if user_input == '4':
-            user_input = "Lizard"
-        if user_input == '5':
-            user_input = "Spock"
-        return user_input
-
+    def choose_gesture(self):
+        print("\nGestures List:\n1. Rock\n2. Paper\n3. Scissors\n4. Lizard\n5. Spock\n")
+        gesture = int(input(self.name + ", please pick a gesture, 1 - 5: "))
+        while gesture < 1 or gesture > 5:
+            gesture = int(input("Invalid Entry. " + self.name +
+                          ", please pick a gesture, 1 - 5: "))
+        self.chosen_gesture = gesture
+        self.winning_matches(self.chosen_gesture)
