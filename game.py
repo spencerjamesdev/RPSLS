@@ -37,6 +37,7 @@ class Game:
     def play_game(self):
         while self.player1.wins < 2 and self.player2.wins < 2:
             self.clear()
+            self.player1.winning_matchups = []
             self.player1.choose_gesture()
             self.player2.choose_gesture()
             self.show_gestures()
@@ -44,8 +45,17 @@ class Game:
             self.show_wins()
             input("\nPress any button to continue. . .")
         self.announce_winner()
-        input("\nPress any button to continue. . .")
-        self.start()
+        play_again = input(
+            "\nWould you like to play with these settings again? Y or N: ")
+        while play_again.lower() != "y" and play_again.lower() != "n":
+            play_again = input(
+                "\nInvalid Entry. Would you like to play with these settings again? Y or N: ")
+        if play_again.lower() == "y":
+            self.player1.wins = 0
+            self.player2.wins = 0
+            self.play_game()
+        else:
+            self.start()
 
     def show_gestures(self):
         print("\n" + self.player1.name + " used " +
