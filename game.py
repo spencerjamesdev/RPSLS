@@ -19,20 +19,23 @@ class Game:
         self.game_type()
 
     def game_type(self):
-        user_input = int(input("Enter 1 for Vs AI : Enter 2 for Vs Human: "))
-        while user_input != 1 and user_input != 2:
+        user_input = int(
+            input("Main Menu:\n1. Vs AI\n2. Vs Human\n3. Quit\n\nEnter option: "))
+        while user_input != 1 and user_input != 2 and user_input != 3:
             user_input = int(
-                input("Invalid Entry. Enter 1 for Vs AI : Enter 2 for Vs Human: "))
+                input("Invalid Entry. Enter 1, 2, or 3 for your choice: "))
         if user_input == 1:
             self.player1 = Human("Player 1")
             self.player2 = Computer("Player 2")
             self.clear()
             self.play_game()
-        else:
+        elif user_input == 2:
             self.player1 = Human("Player 1")
             self.player2 = Human("Player 2")
             self.clear()
             self.play_game()
+        else:
+            quit()
 
     def play_game(self):
         while self.player1.wins < 2 and self.player2.wins < 2:

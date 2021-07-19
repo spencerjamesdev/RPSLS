@@ -1,4 +1,5 @@
 from player import Player
+import getpass
 
 
 class Human(Player):
@@ -8,7 +9,8 @@ class Human(Player):
 
     def choose_gesture(self):
         print("\nGestures List:\n1. Rock\n2. Paper\n3. Scissors\n4. Lizard\n5. Spock\n")
-        gesture = int(input(self.name + ", please pick a gesture, 1 - 5: "))
+        gesture = int(getpass.getpass(
+            self.name + ", please pick a gesture, 1 - 5: "))
         while gesture < 1 or gesture > 5:
             gesture = int(input("Invalid Entry. " + self.name +
                           ", please pick a gesture, 1 - 5: "))
